@@ -46,8 +46,15 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'list your notes',
-    handler(){
-        console.log('Listing out all notes!!')
+    builder: {
+        title:{
+            describe: 'note listed',
+            
+            type: 'string' 
+        }
+    },
+    handler(argv){
+        notes.listNotes(argv.title);
     }
 })
 

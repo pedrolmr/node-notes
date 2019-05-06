@@ -40,18 +40,28 @@ const removeNote = title => {
     const notes = loadNotes();
     notesToKeep = notes.filter(note => note.title !== title);
 
-    if(notesToKeep !== 0){
-        console.log(chalk.red.inverse('note not found'));
-    }else{
+    if(notes.length > notesToKeep.length){
         console.log(chalk.green.inverse('note deleted!'));
+        saveNotes(notesToKeep);
+    }else{
+        console.log(chalk.red.inverse('note not found'));
     }
 
     saveNotes(notesToKeep);
 }
+
+const listNotes = () => {
+    console.log(chalk.bgRedBright.whiteBright.italic.bold('Your Notes:'));
+    const notes = loadNotes();
+    notes.forEach((note) => {
+        console.log(note.title)
+    })
+}
 module.exports = {
     getNotes:getNotes,
     addNote:addNote,
-    removeNote:removeNote
+    removeNote:removeNote,
+    listNotes:listNotes
 };
 
 //set up remove command to take a require --title option
