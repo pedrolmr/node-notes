@@ -44,7 +44,7 @@ const removeNote = title => {
     }
 
     saveNotes(notesToKeep);
-}
+} 
 
 const listNotes = () => {
     console.log(chalk.bgRedBright.whiteBright.italic.bold('Your Notes:'));
