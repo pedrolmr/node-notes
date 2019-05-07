@@ -58,11 +58,25 @@ const listNotes = () => {
         console.log(note.title)
     })
 }
+
+const readNote = (title) => {
+    const notes = loadNotes();
+    const noteTitle = notes.find(note => note.title === title);
+
+    if(!noteTitle){
+        console.log('NOTE NOT FOUND!');
+    }
+    else{
+        console.log(chalk.bgCyanBright.whiteBright.italic("---", noteTitle.title, "---"));
+        console.log(noteTitle.body)
+    }
+}
 module.exports = {
     getNotes:getNotes,
     addNote:addNote,
     removeNote:removeNote,
-    listNotes:listNotes
+    listNotes:listNotes,
+    readNote:readNote
 };
 
 //set up remove command to take a require --title option
