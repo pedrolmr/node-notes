@@ -1,13 +1,8 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => {
-    return ('Your notes...');
-}
-
 const addNote = (title, body) => {
     const notes = loadNotes();
-    // const duplicateNotes = notes.filter((note) => note.title === title);
     const duplicateNote = notes.find(note => note.title === title)
 
     if (!duplicateNote) {
@@ -64,23 +59,16 @@ const readNote = (title) => {
     const noteTitle = notes.find(note => note.title === title);
 
     if(!noteTitle){
-        console.log('NOTE NOT FOUND!');
+        console.log(chalk.bgRedBright.bold('NOTE NOT FOUND!'));
     }
     else{
-        console.log(chalk.bgCyanBright.whiteBright.italic("---", noteTitle.title, "---"));
+        console.log(chalk.bgBlueBright.bold("---", noteTitle.title, "---"));
         console.log(noteTitle.body)
     }
 }
 module.exports = {
-    getNotes:getNotes,
     addNote:addNote,
     removeNote:removeNote,
     listNotes:listNotes,
     readNote:readNote
 };
-
-//set up remove command to take a require --title option
-//create and export a remove function from notes.js
-//call removeNote function in remove command handler
-//have removeNote log the title of the note to be removed
-//test your work using node app.js remove --title="some title"

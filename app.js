@@ -64,6 +64,7 @@ yargs.command({
     builder:{
         title:{
             describe: 'read note',
+            demandOption: true,
             type:'string'
         }
     },
