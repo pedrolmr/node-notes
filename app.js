@@ -49,7 +49,6 @@ yargs.command({
     builder: {
         title:{
             describe: 'note listed',
-            
             type: 'string' 
         }
     },
